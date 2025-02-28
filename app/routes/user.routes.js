@@ -30,11 +30,19 @@ export class UserRoutes {
         // Obtener usuario
         app.post('/get-user', async (req, res) => {
             try {
+
                 const { condition } = req.body;
+                console.log('Condition', condition);
+
                 const user = await UserModel.findAll({
                     where: condition
                 });
-                res.status(200).send({ ok: true, data: user });
+
+                if (user.length > 0) {
+                    res.status(200).send({ ok: true, data: user });
+                } else {
+                    res.status(200).send({ ok: false, message: 'Usuario no encontrado' });
+                }
 
             } catch (error) {
                 console.error('Error', error);

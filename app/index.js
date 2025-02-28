@@ -1,5 +1,6 @@
 import express from "express"; // Importa Express
 import 'dotenv/config'; // Importa las variables de entorno desde un archivo .env
+import cors from 'cors'; // Importa el módulo CORS
 import { Database } from './config/database.config.js'; // Importa la configuración de la base de datos
 import { UserRoutes } from './routes/user.routes.js'; // Importa las rutas de usuario
 
@@ -8,6 +9,11 @@ const port = process.env.APP_PORT || 3001; // Establece el puerto desde el archi
 
 app.use(express.urlencoded({ extended: true })); // Middleware para manejar datos URL-encoded
 app.use(express.json()); // Middleware para manejar datos en formato JSON
+app.use(cors(
+    {
+        origin: '*'
+    }
+)); // Middleware para habilitar CORS
 
 const database = new Database(); // Crea una instancia de la clase Database
 database.connection(); // Establece la conexión con la base de datos
