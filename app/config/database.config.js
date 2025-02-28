@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 
 export const DatabaseConfig = new Sequelize({
     host: "localhost", // El host de la base de datos (generalmente 'localhost' si está en la misma máquina)
-    database: "mysql", // Nombre de la base de datos
+    database: "backendDemo", // Nombre de la base de datos
     username: "root", // Usuario de la base de datos
     password: "", // Contraseña (si tienes una)
     dialect: "mysql", // El tipo de base de datos que estás usando (MySQL en este caso)

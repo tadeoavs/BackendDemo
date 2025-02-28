@@ -83,6 +83,7 @@ export class UserRoutes {
                         {
                             id: updatedUser.id,
                             name: updatedUser.name,
+                            email: updatedUser.email,
                             password: updatedUser.password,
                             created_at: updatedUser.created_at,
                         },
