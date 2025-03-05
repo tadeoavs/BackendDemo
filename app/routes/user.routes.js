@@ -68,7 +68,6 @@ export class UserRoutes {
             const { condition, user } = req.body;
 
             try {
-
                 const existingUser = await UserModel.findOne({
                     where: condition,
                 });
@@ -81,22 +80,7 @@ export class UserRoutes {
                     where: condition,
                 });
 
-                const updatedUser = await UserModel.findOne({
-                    where: condition,
-                });
-
-                res.status(200).send({
-                    ok: true,
-                    data: [
-                        {
-                            id: updatedUser.id,
-                            name: updatedUser.name,
-                            email: updatedUser.email,
-                            password: updatedUser.password,
-                            created_at: updatedUser.created_at,
-                        },
-                    ],
-                });
+                res.status(200).send({ ok: true, message: "Usuario actualizado correctamente" });
             } catch (error) {
                 console.error("Error al actualizar usuario:", error);
                 res.status(500).send({ ok: false, message: "Error al actualizar usuario" });
